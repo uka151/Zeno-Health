@@ -11,12 +11,16 @@ const LandingApp = (props) => {
     const dispatch = useDispatch()
 
     const [loader, setLoader] = useState(false)
+
     
-    const user = useSelector((state) => state.LandingReducers.authCode)
+    const responseMessage = useSelector((state)=>state.LandingReducers.responseMessage)
+
+   
   
     useEffect(() => {
         setLoader(true)
-        dispatch(Actions.getProvisioningStatus("umeshagrahari87@gmail.com"))
+        let transactionId =Array.from(Array(20), () => Math.floor(Math.random() * 36).toString(36)).join('')
+        dispatch(Actions.getProvisioningStatus(transactionId,"readylycx","88a5070e05e37a81c219567d3d0ead1903e9c1106542e8b0b951aafab4ee9dc7"))
             .then(() => {
                 setTimeout(() => {
                     setLoader(false)
@@ -34,7 +38,7 @@ const LandingApp = (props) => {
                 <CircularProgress style={{ color: "#152938", marginTop: 60 }} />
                 <Typography style={{ color: "#152938", fontSize: 24, fontWeight: 700, marginTop: 10, fontFamily: "sans-serif" }}>Please wait...</Typography>
             </div> : <div className='App-loader'>
-                <Typography style={{ color: "#152938", fontSize: 20, fontWeight: 500, marginTop: 20, fontFamily: "sans-serif" }}>{user && user !== null && user.firstName ? "Hi " + user.firstName + " Thanks for choosing us! We are so grateful and hope we met your expectations. " : "Thanks for choosing us! We are so grateful and hope we met your expectations."}</Typography>
+                <Typography style={{ color: "#152938", fontSize: 20, fontWeight: 500, marginTop: 20, fontFamily: "sans-serif" }}>{responseMessage}</Typography>
 
             </div>}
         </div>

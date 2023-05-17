@@ -1,7 +1,8 @@
 import * as Actions from "../actions"
 
 const intialState={
-    authCode:0
+    authCode:0,
+    responseMessage:""
 }
 
 
@@ -13,7 +14,11 @@ const LandingReducers=(state=intialState,action)=>{
                ...state,
                authCode:action.payload
            }
-
+        case Actions.SET_RESPONSE_MESSAGE:
+         return{
+             ...state,
+             responseMessage:action.payload
+         }
         default:return state   
    }
 }
