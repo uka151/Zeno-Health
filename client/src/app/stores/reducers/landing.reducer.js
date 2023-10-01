@@ -1,24 +1,19 @@
 import * as Actions from "../actions"
 
 const intialState={
-    authCode:0,
-    responseMessage:""
+    patientList:[]
 }
 
 
 const LandingReducers=(state=intialState,action)=>{
 
    switch(action.type){
-       case Actions.GET_RESPONSE_FROM_ZENDESK:
+       case Actions.GET_PATIENT_RECORD:
            return{
                ...state,
-               authCode:action.payload
+               patientList:action.payload
            }
-        case Actions.SET_RESPONSE_MESSAGE:
-         return{
-             ...state,
-             responseMessage:action.payload
-         }
+      
         default:return state   
    }
 }

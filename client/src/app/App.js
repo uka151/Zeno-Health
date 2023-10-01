@@ -7,7 +7,7 @@ import store from "./stores";
 
 function App() {
   // only for location analysis in url
-console.log("window",window.location)
+
 
   return (
     <div className="App">
